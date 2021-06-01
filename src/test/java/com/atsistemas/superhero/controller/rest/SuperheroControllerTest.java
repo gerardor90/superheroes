@@ -74,9 +74,8 @@ public class SuperheroControllerTest {
     void deleteSuperhero() throws Exception {
         Superhero superhero = new Superhero(1, "Spiderman", LocalDate.of(1990, Month.JANUARY, 8), "Spain", LocalDateTime.now(), LocalDateTime.now());
 
+        Mockito.when(superheroService.findOne(1)).thenReturn(superhero);
         Mockito.doNothing().when(superheroService).delete(superhero.getId());
-
-        ObjectMapper mapper = new ObjectMapper();
 
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/superheroes/"+1).contentType(MediaType.APPLICATION_JSON)).
                 andExpect(status().isOk()).

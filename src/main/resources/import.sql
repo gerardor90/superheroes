@@ -1,0 +1,4 @@
+INSERT INTO superhero (id, name, date_of_birth, country, created_at, updated_at) VALUES(1, 'Spiderman', '1990-08-20', 'EEUU', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+INSERT INTO superhero (id, name, date_of_birth, country, created_at, updated_at) VALUES(2, 'Batman', '1984-10-25', 'Spain', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+INSERT INTO superhero (id, name, date_of_birth, country, created_at, updated_at) VALUES(3, 'Ironman', '1958-01-02', 'UK', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+INSERT INTO superhero (id, name, date_of_birth, country, created_at, updated_at) VALUES(4, 'Wonder Woman', '1933-04-08', 'EEUU', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
