@@ -1,5 +1,6 @@
 package com.atsistemas.superhero.controller.rest;
 
+import com.atsistemas.superhero.annotation.MeasureTime;
 import com.atsistemas.superhero.models.entity.Superhero;
 import com.atsistemas.superhero.models.service.ISuperheroService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,13 @@ public class SuperheroController {
     @Autowired
     private ISuperheroService superheroService;
 
+    @MeasureTime
     @GetMapping("/superheroes")
     public ResponseEntity<List<Superhero>> findAll() {
         return new ResponseEntity<>(superheroService.findAll(), HttpStatus.OK);
     }
 
+    @MeasureTime
     @GetMapping("/superheroes/{id}")
     public ResponseEntity<Superhero> findSuperhero(@PathVariable int id){
         Superhero superhero = superheroService.findOne(id);
