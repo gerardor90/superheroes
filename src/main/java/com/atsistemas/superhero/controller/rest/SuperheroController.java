@@ -1,6 +1,7 @@
 package com.atsistemas.superhero.controller.rest;
 
 import com.atsistemas.superhero.annotation.MeasureTime;
+import com.atsistemas.superhero.exception.EmptyException;
 import com.atsistemas.superhero.models.entity.Superhero;
 import com.atsistemas.superhero.models.service.ISuperheroService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,25 +20,37 @@ public class SuperheroController {
 
     @MeasureTime
     @GetMapping("/superheroes")
-    public ResponseEntity<List<Superhero>> findAll() {
-        return new ResponseEntity<>(superheroService.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<Superhero>> findAll() throws EmptyException {
+        List<Superhero> superheroes = superheroService.findAll();
+
+        if (superheroes.isEmpty()) {
+            throw new EmptyException("The list of superheroes is empty.");
+        }
+
+        return new ResponseEntity<>(superheroes, HttpStatus.OK);
     }
 
     @MeasureTime
     @GetMapping("/superheroes/{id}")
-    public ResponseEntity<Superhero> findSuperhero(@PathVariable int id){
+    public ResponseEntity<Superhero> findSuperhero(@PathVariable int id) throws EmptyException {
         Superhero superhero = superheroService.findOne(id);
 
         if(superhero == null) {
-            throw new RuntimeException("Superhero id not found - " + superhero);
+            throw new EmptyException("Superhero id not found - " + id);
         }
 
         return new ResponseEntity<>(superhero, HttpStatus.OK);
     }
 
     @GetMapping("/superheroes/name/{name}")
-    public ResponseEntity<List<Superhero>> findSuperheroByName(@PathVariable String name){
-        return new ResponseEntity<>(superheroService.findByName(name), HttpStatus.OK);
+    public ResponseEntity<List<Superhero>> findSuperheroByName(@PathVariable String name) throws EmptyException {
+        List<Superhero> superheroes = superheroService.findByName(name);
+
+        if(superheroes.isEmpty()) {
+            throw new EmptyException("Superhero name not found - " + name);
+        }
+
+        return new ResponseEntity<>(superheroes, HttpStatus.OK);
     }
 
     @PutMapping("/superheroes")
@@ -46,11 +59,11 @@ public class SuperheroController {
     }
 
     @DeleteMapping("/superheroes/{id}")
-    public ResponseEntity<String> deleteSuperhero(@PathVariable int id) {
+    public ResponseEntity<String> deleteSuperhero(@PathVariable int id) throws EmptyException {
         Superhero superhero = superheroService.findOne(id);
 
         if(superhero == null) {
-            throw new RuntimeException("Superhero id not found - " + superhero);
+            throw new EmptyException("Superhero id not found - " + id);
         }
 
         superheroService.delete(id);
