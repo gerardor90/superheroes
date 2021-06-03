@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "82975aa2-b2e7-4efe-86ac-04d5f0cb5eb3",
+		"name": "Superhero",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\" : \"admin\",\r\n    \"password\" : \"password1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAll",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZXJhcmRvIiwiQ0xBSU1fVE9LRU4iOiJST0xFX1VTRVIiLCJpYXQiOjE2MjI3MDgzNDIsImlzcyI6IklTU1VFUiIsImV4cCI6MTYyMjczNzE0Mn0.4HtfO7qt9VxUVwMgYto5kHW19utiifppVL0g28waDZ0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/superheroes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"superheroes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAllByName",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZXJhcmRvIiwiQ0xBSU1fVE9LRU4iOiJST0xFX1VTRVIiLCJpYXQiOjE2MjI3MDgzNDIsImlzcyI6IklTU1VFUiIsImV4cCI6MTYyMjczNzE0Mn0.4HtfO7qt9VxUVwMgYto5kHW19utiifppVL0g28waDZ0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/superheroes/name/spiderman",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"superheroes",
+						"name",
+						"spiderman"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findOne",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZXJhcmRvIiwiQ0xBSU1fVE9LRU4iOiJST0xFX1VTRVIiLCJpYXQiOjE2MjI3MDgzNDIsImlzcyI6IklTU1VFUiIsImV4cCI6MTYyMjczNzE0Mn0.4HtfO7qt9VxUVwMgYto5kHW19utiifppVL0g28waDZ0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/superheroes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"superheroes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modify",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZXJhcmRvIiwiQ0xBSU1fVE9LRU4iOiJST0xFX1VTRVIiLCJpYXQiOjE2MjI3MDgzNDIsImlzcyI6IklTU1VFUiIsImV4cCI6MTYyMjczNzE0Mn0.4HtfO7qt9VxUVwMgYto5kHW19utiifppVL0g28waDZ0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Captain America\",\r\n    \"dateOfBirth\": \"2000-08-20\",\r\n    \"country\": \"EEUU\",\r\n    \"createdAt\": \"2021-06-01T21:09:13.144493\",\r\n    \"updatedAt\": \"2021-06-01T21:09:13.144493\"\r\n}\r\n\r\n{ \"id\": 4, \"name\": \"Captain America\", \"dateOfBirth\": \"2000-08-20\", \"country\": \"EEUU\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/superheroes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"superheroes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZXJhcmRvIiwiQ0xBSU1fVE9LRU4iOiJST0xFX1VTRVIiLCJpYXQiOjE2MjI3MDgzNDIsImlzcyI6IklTU1VFUiIsImV4cCI6MTYyMjczNzE0Mn0.4HtfO7qt9VxUVwMgYto5kHW19utiifppVL0g28waDZ0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/superheroes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"superheroes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
